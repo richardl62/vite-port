@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { JSX, ReactNode } from "react";
 import styled from "styled-components";
 import {useDrag, useDrop } from "./drag-drop";
 

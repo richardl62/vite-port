@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
+import { JSX, useEffect, useReducer, useState } from "react";
 import { Board } from ".";
 import { ScrabbleGameProps } from "../client-side/srcabble-game-props";
 import { initialReducerState } from "../client-side/reducer-state";

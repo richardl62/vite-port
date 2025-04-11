@@ -1,4 +1,4 @@
-import React from "react";
+import { JSX } from "react";
 import styled from "styled-components";
 import { WordDirection } from "../word-finder/get-legal-words/word-position";
 

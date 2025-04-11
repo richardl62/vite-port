@@ -1,9 +1,9 @@
-import React from "react";
 import styled from "styled-components";
 import { CardNonJoker, CardSVG } from "../../../utils/cards";
 import { cardSize, cardVerticalStackingOffset } from "../../../utils/cards/styles";
 import { CardID } from "../game-control/card-id";
 import { useCardDragRef, useCardDropRef } from "./drag-drop";
+import { JSX } from "react";
 
 
 const SubStackDiv = styled.div`
@@ -57,7 +57,6 @@ export function CardStack(props: {
     cards: (CardNonJoker|null)[];
     dragID?: (index: number) => CardID;
     dropID?: CardID | null;
-
 }): JSX.Element {
     const { cards, dragID, dropID } = props;
 

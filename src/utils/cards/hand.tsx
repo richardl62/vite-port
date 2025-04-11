@@ -1,4 +1,4 @@
-import React from "react";
+import { JSX } from "react";
 import { CardDnD, getCardID, playingCard } from "./card-dnd";
 import { Card } from "./types";
 import { Spread } from "./spread";

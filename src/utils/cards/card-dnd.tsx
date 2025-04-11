@@ -1,4 +1,4 @@
-import React from "react";
+import { JSX } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { sAssert } from "../assert";
 import { CardSVG } from "./card";

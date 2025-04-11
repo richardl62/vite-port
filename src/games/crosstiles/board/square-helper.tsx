@@ -1,4 +1,4 @@
-import React from "react";
+import { JSX } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import styled from "styled-components";
 import { ClickMoveMarker } from "../../../utils/board/click-move-marker";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTicker } from "../../../utils/use-countdown";
 import { useGameContext } from "../client-side/game-context";

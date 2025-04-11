@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import { JSX, useEffect, useReducer } from "react";
 import { useAsync } from "react-async-hook";
 import { AsyncStatus } from "../../../utils/async-status";
 import { getScrabbleWords } from "../../../utils/get-scrabble-words";

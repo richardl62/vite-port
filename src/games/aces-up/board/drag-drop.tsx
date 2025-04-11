@@ -1,4 +1,4 @@
-import React from "react";
+import { JSX } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { CardSVG } from "../../../utils/cards";
 import { useGameContext } from "../game-support/game-context";
