@@ -4,12 +4,16 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-
-    <button onClick={() => setCount((count) => count + 1)}>
-      count is {count}
-    </button>
-
+    <div>
+      <button onClick={() => setCount(newCount(count))}>
+        count is {count}
+      </button>
+      <div>Hello!!</div>
+    </div>
   )
 }
 
+function newCount(a: number) {
+  return a + 2.2;
+}
 export default App

@@ -10,8 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "boardgame.io": "^0.50.2",
+    "express": "^5.1.0",
+    "path": "^0.12.7",
+    "rdndmb-html5-to-touch": "^9.0.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-async-hook": "^4.0.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-multi-backend": "^9.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.5.0",
+    "styled-components": "^6.1.17"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
