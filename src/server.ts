@@ -10,13 +10,13 @@ app.use(express.static(path.join(__dirname, '..', 'build')));
 
 // API routes (if any)
 // Example:
-app.get('/api/data', (req, res) => {
+app.get('/api/data', (_req, res) => {
     res.json({ message: 'Hello from the API!' });
 });
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
-app.get('*', (req, res) => {
+app.get('*', (_req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
