@@ -36,11 +36,14 @@ const PegContainer = styled.div.attrs<
 HoleProps, // What is consumed by .attrs()
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     {style: any} // What comes out of .attrs(). Use of 'any' is a kludge. 
->((props) => {
+
+// DnD PORTING KLUDGE
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+>((_props) => {
     return {style: {
         position: "absolute",
-        bottom: props.bottom,
-        left: props.left,
+        //bottom: props.bottom,
+        //left: props.left,
     }};
 })<HoleProps>`
 

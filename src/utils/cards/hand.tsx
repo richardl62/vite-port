@@ -1,8 +1,8 @@
 import { JSX } from "react";
-import { CardDnD, getCardID, playingCard } from "./card-dnd";
+import { CardDnD, /*getCardID, playingCard*/ } from "./card-dnd";
 import { Card } from "./types";
 import { Spread } from "./spread";
-import { useDrop } from "react-dnd";
+//import { useDrop } from "react-dnd";
 import styled from "styled-components";
 
 const OuterDiv = styled.div`
@@ -50,19 +50,20 @@ export function Hand(props: HandProps) : JSX.Element {
         return props.showBack(index);
     };
 
-    const [, dropRef] = useDrop(() => ({
-        accept: playingCard,
-        drop: (draggedID, monitor) => {
-            // Ignore recursive drops (i.e. ignore a drop on this hand
-            // if drop on a card in the hand has already been reported).
-            if (!monitor.didDrop()) {
-                onDrop({
-                    from: getCardID(draggedID),
-                    to: { handID }
-                });
-            }
-        },
-    }), [handID]);
+    // DnD PORTING KLUDGE
+    // const [, dropRef] = useDrop(() => ({
+    //     accept: playingCard,
+    //     drop: (draggedID, monitor) => {
+    //         // Ignore recursive drops (i.e. ignore a drop on this hand
+    //         // if drop on a card in the hand has already been reported).
+    //         if (!monitor.didDrop()) {
+    //             onDrop({
+    //                 from: getCardID(draggedID),
+    //                 to: { handID }
+    //             });
+    //         }
+    //     },
+    // }), [handID]);
 
     const elems = cards.map((card, index) => {
 
@@ -88,7 +89,7 @@ export function Hand(props: HandProps) : JSX.Element {
     />;
 
     if(dropTarget()) {
-        return <OuterDiv ref={dropRef}>
+        return <OuterDiv /*ref={dropRef}*/>
             {spread} 
         </OuterDiv>;
     }

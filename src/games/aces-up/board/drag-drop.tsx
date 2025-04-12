@@ -62,13 +62,14 @@ const CD = styled.div`
 `;
 
 export function CardDraggable(props: Props): JSX.Element {
-    const { id } = props;
+    // DnD PORTING KLUDGE
+    //const { id } = props; // DnD PORTING KLUDGE
 
-    const dropRef = useCardDropRef(id);
-    const dragRef = useCardDragRef(id);
+    //const dropRef = useCardDropRef(id);
+    //const dragRef = useCardDragRef(id);
 
-    return <CD ref={dropRef}>
-        <div ref={dragRef}>
+    return <CD /*ref={dropRef}*/>
+        <div /* ref={dragRef} */>
             <CardSVG {...props} />
         </div>
     </CD>;
