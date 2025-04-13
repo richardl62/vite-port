@@ -2,7 +2,6 @@ import { Card, CardBack } from "./types";
 import { sAssert } from "../../utils/assert";
 import React, { JSX } from "react";
 
-import CardBackSVG from './images/1B.svg'; // Temporary
 function makeCardNames() : string[]{
     // Start with the jokers and the two back cards
     const cardNames = ["1B", "1J", "2B", "2J"];
@@ -24,7 +23,7 @@ const cardNames = makeCardNames();
 function makeLazyComponents() {
     const components : Record<string, ReturnType<typeof React.lazy> > = {};
     for (const name of cardNames) {
-        components[name] = React.lazy(() => import(`./images/${name}.svg`));
+        components[name] = React.lazy(() => import(`./images/${name}.svg?react`));
     }
 
     return components
@@ -46,7 +45,7 @@ function getCardComponentByFileName(name: string) : JSX.Element {
     );
 }
 
-export function getCardComponentWip(card: Card) : JSX.Element  {
+export function getCardComponent(card: Card) : JSX.Element  {
     const { rank, suit, joker } = card;
 
     let fileName;
@@ -61,19 +60,9 @@ export function getCardComponentWip(card: Card) : JSX.Element  {
     return getCardComponentByFileName(fileName);
 }
 
-export function getCardBackComponentWip(cardBack: CardBack) : JSX.Element {
+export function getCardBackComponent(cardBack: CardBack) : JSX.Element {
 
     const fileName = cardBack === "black" ? "1B" : "2B";
 
     return getCardComponentByFileName(fileName);
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function getCardComponent(_card: Card) : JSX.Element  {
-    return <div>card</div>;
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function getCardBackComponent(_cardBack: CardBack) : JSX.Element {
-    return  <CardBackSVG />;
 }
