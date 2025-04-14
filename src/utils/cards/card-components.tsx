@@ -1,6 +1,7 @@
 import { Card, CardBack } from "./types";
 import { sAssert } from "../../utils/assert";
 import React, { JSX } from "react";
+import { cardSize } from "./styles";
 
 function makeCardNames() : string[]{
     // Start with the jokers and the two back cards
@@ -40,7 +41,7 @@ function getCardComponentByFileName(name: string) : JSX.Element {
   
     return (
         <React.Suspense fallback={<div>Loading card...</div>}>
-            <CardComponent />
+            <CardComponent style={cardSize}/>
         </React.Suspense>
     );
 }
