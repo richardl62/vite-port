@@ -41,7 +41,7 @@ function getCardComponentByFileName(name: string) : JSX.Element {
   
     return (
         <React.Suspense fallback={<div>Loading card...</div>}>
-            <CardComponent style={cardSize}/>
+            <CardComponent style={cardSize}/> {/* Kludge: hard coded card size */}
         </React.Suspense>
     );
 }
