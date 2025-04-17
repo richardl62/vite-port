@@ -1,5 +1,5 @@
 import { JSX } from "react";
-//import { useDrag, useDrop } from "react-dnd";
+import { useDrag, useDrop } from "react-dnd";
 import { sAssert } from "../assert";
 import { CardSVG } from "./card";
 
@@ -39,27 +39,26 @@ interface CardDnDProps extends CardProps {
 }
 
 export function CardDnD(props: CardDnDProps) : JSX.Element {
-   // DnD PORTING KLUDGE
-    // const { cardID, draggable, dropTarget, onDrop } = props;
+    const { cardID, draggable, dropTarget, onDrop } = props;
 
-    // const [, dragRef] = useDrag(() => ({
-    //     type: playingCard,
-    //     item: cardID,
-    // }), [cardID]);
+    const [, dragRef] = useDrag(() => ({
+        type: playingCard,
+        item: cardID,
+    }), [cardID]);
 
-    // const [, dropRef] = useDrop(() => ({
-    //     accept: playingCard,
-    //     drop: (draggedID) => {
-    //         onDrop({
-    //             from: getCardID(draggedID),
-    //             to: cardID
-    //         });
-    //     }
-    // }), [cardID]);
+    const [, dropRef] = useDrop(() => ({
+        accept: playingCard,
+        drop: (draggedID) => {
+            onDrop({
+                from: getCardID(draggedID),
+                to: cardID
+            });
+        }
+    }), [cardID]);
 
 
-    return <div /*ref={dropTarget ? dropRef : undefined}*/>
-        <div /*ref={draggable ? dragRef : undefined }*/>
+    return <div ref={dropTarget ? dropRef : undefined}>
+        <div ref={draggable ? dragRef : undefined }>
             <CardSVG {...props} />
         </div>
     </div>;

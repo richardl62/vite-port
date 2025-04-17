@@ -36,10 +36,9 @@ interface SquareHelperProps {
 }
 
 export function SquareHelper(props: SquareHelperProps): JSX.Element {
-    // DnD PORTING KLUDGE
-    const { letter, /*dragRef, dropRef,*/ onClick, clickMoveDirection } = props;
-    return <EmptySquare /*ref={dropRef}*/ onClick={onClick}>
-        {letter && <TileDiv /*ref={dragRef}*/ bonus={bonusLetters.includes(letter)}>
+    const { letter, dragRef, dropRef, onClick, clickMoveDirection } = props;
+    return <EmptySquare ref={dropRef} onClick={onClick}>
+        {letter && <TileDiv ref={dragRef} bonus={bonusLetters.includes(letter)}>
             {letter === "Q" ? "Qu" : letter}
         </TileDiv>
         }

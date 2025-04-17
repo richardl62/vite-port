@@ -2,10 +2,8 @@ import styled from "styled-components";
 import { CardNonJoker, CardSVG } from "../../../utils/cards";
 import { cardSize, cardVerticalStackingOffset } from "../../../utils/cards/styles";
 import { CardID } from "../game-control/card-id";
-// DnD PORTING KLUDGE
-//import { useCardDragRef, useCardDropRef } from "./drag-drop";
+import { useCardDragRef, useCardDropRef } from "./drag-drop";
 import { JSX } from "react";
-
 
 const SubStackDiv = styled.div`
     position: absolute;
@@ -23,10 +21,9 @@ function SubStack(props: {
 }) {
     const {cards, cardIndex, dragID } = props;
 
-    // DnD PORTING KLUDGE
-    //const dragRef = useCardDragRef(dragID ? dragID(cardIndex) : null);
+    const dragRef = useCardDragRef(dragID ? dragID(cardIndex) : null);
 
-    return <SubStackDiv /*ref={dragRef}*/>
+    return <SubStackDiv ref={dragRef}>
         <CardSVG card={cards[cardIndex]} />
         {cardIndex < cards.length - 1 &&
             <SubStack cards={cards} cardIndex={cardIndex+1} dragID={dragID} />
@@ -36,7 +33,6 @@ function SubStack(props: {
 }
 
 /** Return height of CardStack in pixels */
-// DnD PORTING KLUDGE
 // eslint-disable-next-line react-refresh/only-export-components
 export function cardStackHeight(nCards: number) : number {
     if(nCards === 0) {
@@ -61,12 +57,13 @@ export function CardStack(props: {
     cards: (CardNonJoker|null)[];
     dragID?: (index: number) => CardID;
     dropID?: CardID | null;
-}): JSX.Element {
-    const { cards, dragID, /*dropID*/ } = props;
-    // DnD PORTING KLUDGE
-    //const dropRef = useCardDropRef(dropID || null);
 
-    return <CardStackDiv /* ref={dropRef} */ height={cardStackHeight(cards.length)}>
+}): JSX.Element {
+    const { cards, dragID, dropID } = props;
+
+    const dropRef = useCardDropRef(dropID || null);
+
+    return <CardStackDiv ref={dropRef} height={cardStackHeight(cards.length)}>
         {cards.length === 0 ? 
             <CardSVG /> : 
             <SubStack cards={cards} cardIndex={0} dragID={dragID} />
