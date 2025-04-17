@@ -26,7 +26,7 @@ const ArrowHead = styled.div`
     border-bottom: calc(${squareSize}*0.3) solid transparent;
 `;
     
-
+// eslint-disable-next-line react-refresh/only-export-components
 export function nextCickMoveDirection(current: WordDirection| null) : WordDirection | null {
     if(current === null) {
         return "row";

@@ -15,6 +15,7 @@ interface CardID {
     index: number;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function getCardID(arg: unknown) : CardID {
     const cid = arg as CardID;
     sAssert(typeof cid === "object" &&

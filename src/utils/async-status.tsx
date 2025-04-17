@@ -53,6 +53,7 @@ export function AsyncStatus(props: AsyncStatusProps) : JSX.Element {
 }
 
 // Convenience function
+// eslint-disable-next-line react-refresh/only-export-components
 export function loadingOrError(props: AsyncStatus) : boolean {
     const { loading, error } = props;
 

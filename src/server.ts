@@ -1,4 +1,3 @@
-/* eslint-disable quotes */
 import express from 'express';
 import path from 'path';
 
