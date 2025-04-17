@@ -33,17 +33,12 @@ a warnings like
     Consider using the attrs method ...
 */
 const PegContainer = styled.div.attrs<
-HoleProps, // What is consumed by .attrs()
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    {style: any} // What comes out of .attrs(). Use of 'any' is a kludge. 
-
-// DnD PORTING KLUDGE
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
->((_props) => {
+    HoleProps // What is consumed by .attrs() 
+ >((props) => {
     return {style: {
         position: "absolute",
-        //bottom: props.bottom,
-        //left: props.left,
+        bottom: props.bottom,
+        left: props.left,
     }};
 })<HoleProps>`
 
