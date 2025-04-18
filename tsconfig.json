@@ -5,7 +5,8 @@
   },
   "files": [],
   "references": [
-    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.app.json" }, // Frontend
+    { "path": "./server/tsconfig.json" }, // Backend
     { "path": "./tsconfig.node.json" }
   ]
 }
