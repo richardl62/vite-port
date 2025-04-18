@@ -1,24 +1,32 @@
-import express from 'express';
-import path from 'path';
+// Adapted from https://boardgame.io/documentation/#/deployment?id=heroku
 
-const app = express();
-const port = process.env.PORT || 8000; 
+import path from "path";
+import serve from "koa-static";
+import { gamesNoBoard } from "./games/app-games-no-board";
+import { Origins, Server } from "./boardgame-lib/server";
 
-// Serve static files from the React app build directory
-app.use(express.static(path.join(__dirname, '..', 'build')));
+console.log("Starting games server");
 
-// API routes (if any)
-// Example:
-app.get('/api/data', (_req, res) => {
-    res.json({ message: 'Hello from the API!' });
+const server = Server({ 
+    games: gamesNoBoard,
+    origins: [
+        // Allow your game site to connect.
+        "https://richards-board-games.herokuapp.com",
+        // Allow localhost to connect, except when NODE_ENV is 'production'.
+        Origins.LOCALHOST_IN_DEVELOPMENT
+    ],
 });
+const PORT = process.env.PORT || 8000;
 
-// The "catchall" handler: for any request that doesn't
-// match one above, send back React's index.html file.
-app.get('*', (_req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+// Build path relative to the server.js file
+const frontEndAppBuildPath = path.resolve(__dirname, "../build");
+server.app.use(serve(frontEndAppBuildPath));
 
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+server.run(PORT as never, () => {
+    server.app.use(
+        async (ctx, next) => await serve(frontEndAppBuildPath)(
+            Object.assign(ctx, { path: "index.html" }),
+            next
+        )
+    );
 });
